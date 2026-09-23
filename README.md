@@ -1,0 +1,1 @@
+# Fitbuddy--AI-Fitness-plan-generator-using-gemini-model
