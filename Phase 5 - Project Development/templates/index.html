@@ -1,0 +1,128 @@
+`templates/index.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitBuddy — AI Fitness Plan Generator</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">&#128170;</span>
+      FitBuddy<span class="logo-accent">AI</span>
+    </a>
+    <nav class="nav-links">
+      <a href="/">Generate Plan</a>
+      <a href="/view-all-users">View All Users</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="hero-badge">Powered by Google Gemini 1.5</div>
+    <h1>Your AI-Powered <span class="accent">Fitness Plan</span></h1>
+    <p class="hero-sub">
+      Get a personalized 7-day workout plan and nutrition tips tailored to your
+      goals, body, and intensity level — generated instantly by AI.
+    </p>
+  </section>
+
+  <section class="form-card">
+    <h2 class="form-title">Tell us about yourself</h2>
+
+    {% if error %}
+    <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+
+    <form action="/generate" method="post" class="fitness-form" id="generateForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Alex Carter" required />
+        </div>
+
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="1" max="120" placeholder="e.g. 28" required />
+        </div>
+
+        <div class="form-group">
+          <label for="weight">Weight</label>
+          <input type="text" id="weight" name="weight" placeholder="e.g. 75 kg" required />
+        </div>
+
+        <div class="form-group">
+          <label for="goal">Goal</label>
+          <input type="text" id="goal" name="goal" placeholder="e.g. Build muscle & lose fat" required />
+        </div>
+
+        <div class="form-group full">
+          <label for="intensity">Intensity Level</label>
+          <select id="intensity" name="intensity">
+            <option value="Beginner">Beginner</option>
+            <option value="Moderate" selected>Moderate</option>
+            <option value="Advanced">Advanced</option>
+            <option value="Athlete">Athlete / Extreme</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+        <span class="btn-text">Generate My Plan</span>
+        <span class="btn-loader" hidden>Generating…</span>
+      </button>
+    </form>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">&#128170;</div>
+      <h3>7-Day Workout Plan</h3>
+      <p>Day-by-day exercises with sets, reps, and rest — powered by Gemini 1.5 Pro.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#129385;</div>
+      <h3>Nutrition Tips</h3>
+      <p>Practical dietary guidance, meal ideas, and hydration advice from Gemini Flash.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128260;</div>
+      <h3>Feedback Loop</h3>
+      <p>Request plan updates like "add yoga" or "more cardio" and get a revised plan instantly.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>FitBuddy — AI Fitness Plan Generator &middot; Built with FastAPI + Gemini</p>
+</footer>
+
+<script>
+  const form = document.getElementById('generateForm');
+  const btn = document.getElementById('submitBtn');
+  const btnText = btn.querySelector('.btn-text');
+  const btnLoader = btn.querySelector('.btn-loader');
+
+  form.addEventListener('submit', function() {
+    btn.disabled = true;
+    btnText.hidden = true;
+    btnLoader.hidden = false;
+  });
+</script>
+
+</body>
+</html>
+```
+
+This is the landing page where users fill out their name, age, weight, goal, and intensity level, then submit the form to generate their AI fitness plan. The button shows a "Generating..." loading state while waiting for the Gemini API to respond. Let me know which file you'd like next.
