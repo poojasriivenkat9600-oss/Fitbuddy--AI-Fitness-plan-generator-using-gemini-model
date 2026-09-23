@@ -9,5 +9,6 @@ The application renders dynamic dashboards and functional views split by operati
 4. **Coaches Admin Hub Grid:** Dashboard route (`/view-all-users`) reviewing all integrated team logs.
 
 ## Project Video Demonstration
-* **Google Drive Video Link:** [INSERT_YOUR_PUBLIC_GOOGLE_DRIVE_VIDEO_LINK_HERE]
+* **Google Drive Video link** *
+https://drive.google.com/file/d/1RdOUGhtTw_QbrL9F2CFmK_MvJec2fPMg/view?usp=drivesdk
 * *Note: The video contains full functionality walkthrough, audio voice-over explanation, goals overview, workflow, and application testing loops.*
